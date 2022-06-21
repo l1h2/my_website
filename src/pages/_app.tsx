@@ -5,10 +5,10 @@ import { Toaster } from 'react-hot-toast'
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <main className="flex bg-gray-700">
+    <div className="flex bg-gray-700">
       <Navbar />
       <Component {...pageProps} />
       <Toaster />
-    </main>
+    </div>
   )
 }

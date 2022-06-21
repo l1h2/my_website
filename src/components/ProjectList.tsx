@@ -1,7 +1,8 @@
 import { useState } from 'react'
-import { BsHash } from 'react-icons/bs'
 import { FaChevronDown, FaChevronRight } from 'react-icons/fa'
 import { TiArrowRight } from 'react-icons/ti'
+import Link from 'next/link'
+import kebabCase from 'lodash.kebabcase'
 
 const webApps = ['Social App', 'Web Scrapper']
 const artificialIntelligence = ['Tic-Tac-Toe', 'Spaceship']
@@ -14,7 +15,8 @@ const ProjectBlock = () => (
 )
 
 const Dropdown = ({ header, selections }) => {
-  const [expanded, setExpanded] = useState(true);
+  const [expanded, setExpanded] = useState(true)
+  let projectID = 1
 
   return (
     <div className='dropdown'>
@@ -26,7 +28,7 @@ const Dropdown = ({ header, selections }) => {
       </div>
       {expanded &&
         selections &&
-        selections.map((selection) => <TopicSelection selection={selection} />)}
+        selections.map((selection) => <TopicSelection key={projectID += 1} selection={selection} />)}
     </div>
   )
 }
@@ -40,12 +42,18 @@ const ChevronIcon = ({ expanded }) => {
   )
 }
 
-const TopicSelection = ({ selection }) => (
-  <div className='dropdown-selection'>
-    <TiArrowRight size='24' />
-    <h5 className='dropdown-selection-text'>{selection}</h5>
-  </div>
-)
+const TopicSelection = ({ selection }) => {
+  const slug = "/projects/" + kebabCase(selection)
+  
+  return (
+      <Link href={slug}>
+        <div className='dropdown-selection'>
+          <TiArrowRight size='24' />
+          <h5 className='dropdown-selection-text'>{selection}</h5>
+        </div>
+      </Link>
+  )
+}
 
 export default function ProjectBar() {
   return (
