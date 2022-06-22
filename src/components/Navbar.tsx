@@ -1,12 +1,14 @@
 import { BsFillMenuButtonWideFill, BsLightbulbFill, BsFillPersonFill } from 'react-icons/bs'
 import { AiOutlineMessage, AiFillHome } from 'react-icons/ai'
-import { useState } from 'react'
-import ProjectBar from '@components/ProjectList'
+import { useContext } from 'react'
 import Link from 'next/link'
+import { ProjectContext } from '@lib/context'
 
-const NavBarIcon = ({ icon, text = 'tooltip 💡', isLink = true, link = "", showProjects = false, setShowProjects }) => {
+const NavBarIcon = ({ icon, text = 'tooltip 💡', isLink = true, link = "" }) => {
+  const { showProjects, setShowProjects } = useContext(ProjectContext)
+  
   const renderAction = () => {
-    isLink ? setShowProjects(showProjects) : setShowProjects(!showProjects)
+    isLink ? setShowProjects(false) : setShowProjects(!showProjects)
   }
 
   return (
@@ -24,22 +26,15 @@ const NavBarIcon = ({ icon, text = 'tooltip 💡', isLink = true, link = "", sho
 const Divider = () => <hr className="navbar-hr" />
 
 export default function Navbar() {
-  const [showProjects, setShowProjects] = useState(false)
-
   return (
-    <>
-      <div className="navbar-container">
-        <NavBarIcon icon={<AiFillHome size="28" />} text={"Home"} link={"/"} setShowProjects={setShowProjects} />
-        <Divider />
-        <NavBarIcon icon={<BsFillPersonFill size="32" />} text={"About me"} link={"/about_me"} setShowProjects={setShowProjects} />
-        <NavBarIcon icon={<BsFillMenuButtonWideFill size="20" />} text={"Experience"} link={"/experience"} setShowProjects={setShowProjects} />
-        <NavBarIcon icon={<BsLightbulbFill size="20" />} text={"Projects"} isLink={false} showProjects={showProjects} setShowProjects={setShowProjects} />
-        <Divider />
-        <NavBarIcon icon={<AiOutlineMessage size="22" />} text={"Contacts"} link={"/contacts"} setShowProjects={setShowProjects} />
-      </div>
-      <div className={showProjects ? 'project-bar' : 'project-bar w-0'}>
-        <ProjectBar />
-      </div>
-    </>
+    <div className="navbar-container">
+      <NavBarIcon icon={<AiFillHome size="28" />} text={"Home"} link={"/"} />
+      <Divider />
+      <NavBarIcon icon={<BsFillPersonFill size="32" />} text={"About me"} link={"/about_me"} />
+      <NavBarIcon icon={<BsFillMenuButtonWideFill size="20" />} text={"Experience"} link={"/experience"} />
+      <NavBarIcon icon={<BsLightbulbFill size="20" />} text={"Projects"} isLink={false} />
+      <Divider />
+      <NavBarIcon icon={<AiOutlineMessage size="22" />} text={"Contacts"} link={"/contacts"} />
+    </div>
   )
 }
