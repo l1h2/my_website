@@ -1,7 +1,7 @@
-import { useContext, useState, useEffect, useCallback } from "react"
+import { useContext, useState, useEffect, useCallback } from 'react'
 import { doc, writeBatch, getDoc, getFirestore } from 'firebase/firestore'
 import debounce from 'lodash.debounce'
-import { UserContext } from "@lib/context"
+import { UserContext } from '@lib/context'
 
 export function UsernameForm () {
     const [formValue, setFormValue] = useState('')
@@ -22,7 +22,7 @@ export function UsernameForm () {
         try {
             await batch.commit()
         } catch {
-            console.log('Operation failed.')
+            console.log("Operation failed.")
         }
     }
 
@@ -61,7 +61,7 @@ export function UsernameForm () {
     
     return (
         <section>
-            <h1>You still haven't picked an username</h1>
+            <h1>You still haven`t picked an username</h1>
             <p>Please select one to enable access to all features in the website.</p>
             <form onSubmit={onSubmit} className="input-form">
                 <input name="username" placeholder="Username" value={formValue} onChange={onChange} />

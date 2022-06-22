@@ -8,7 +8,7 @@ export default function UserState() {
   return (
     <Link href='/enter'>
       <div className="login-container group">
-        <img className='user-img' src={user?.photoURL || '/hacker.png'} />
+        <img className="user-img" src={user?.photoURL || "/hacker.png"} />
         <span className="login-tooltip group-hover:scale-100">
           {username ? username : 'Log In'}
         </span>
