@@ -67,8 +67,37 @@
   .content-container {
     @apply absolute left-24 mt-6 text-gray-400;
   }
-  
+
+  .login-container {
+    @apply relative flex h-10 w-10 mt-2 mb-2 ml-auto mr-2 hover:bg-gray-500 bg-gray-800 z-10
+    hover:rounded-xl rounded-3xl transition-all duration-100 ease-linear cursor-pointer shadow-lg;
+  }
+
+  .login-tooltip {
+    @apply absolute w-auto p-2 m-2 min-w-max right-12 rounded-md shadow-md text-white
+    bg-gray-900 text-xs font-bold transition-all duration-100 scale-0 origin-right;
+  }
+
+  .user-img {
+    @apply rounded-3xl;
+  }
+    
   .btn-default {
-    @apply bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-lg;
+    @apply inline-flex items-center bg-gray-300 hover:opacity-80 text-gray-800 font-bold py-2
+    px-4 rounded-lg m-3;
+  }
+
+  .btn-icon {
+    @apply w-5 mr-2;
+  }
+
+  .btn-input {
+    @apply inline-flex justify-center w-20 m-2 p-2 hover:bg-blue-600 bg-gray-900 text-blue-400
+    hover:text-white hover:rounded-xl rounded-3xl transition-all duration-300 ease-linear h-10
+    cursor-pointer shadow-lg;
+  }
+
+  .input-form {
+    @apply flex h-10;
   }
 }
